@@ -3,7 +3,7 @@
  */
 
 import React, { useState } from 'react';
-import { BarChart3, Settings, FolderOpen, Plane, Menu } from 'lucide-react';
+import { BarChart3, Settings, FolderOpen, Plane, Menu, Box } from 'lucide-react';
 import { ViewState, GeneratedScenario, SavedTestCase, Aircraft } from '@/types';
 import { MOCK_AIRCRAFT } from '@/data/mockData';
 import { UseCaseModalReturn } from '@/features/library/hooks/useCaseModal';
@@ -16,6 +16,7 @@ import AircraftGrid from '@/features/dashboard/AircraftGrid';
 import TestCaseGenerator from '@/features/generator/TestCaseGenerator';
 import TestCaseLibrary from '@/features/library/TestCaseLibrary';
 import { CreateCaseModal, EditCaseModal } from '@/features/library/components/CaseModals';
+import { ModelViewerPage } from '@/features/model-viewer';
 
 interface MainLayoutProps {
   view: ViewState;
@@ -61,6 +62,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({
     { id: 'dashboard', icon: Settings, label: '态势监控' },
     { id: 'generator', icon: BarChart3, label: '智能生成' },
     { id: 'library', icon: FolderOpen, label: '用例库' },
+    { id: 'model-viewer', icon: Box, label: '3D 模型' },
   ];
 
   // Handle view change with reset
@@ -179,6 +181,11 @@ const MainLayout: React.FC<MainLayoutProps> = ({
           </div>
         </div>
       </main>
+
+      {/* 3D Model Viewer - Full screen overlay */}
+      {view === 'model-viewer' && (
+        <ModelViewerPage onClose={() => setView('dashboard')} />
+      )}
 
       {/* Modal Layer */}
       <AircraftDetailModal

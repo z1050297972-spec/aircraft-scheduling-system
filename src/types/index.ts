@@ -15,3 +15,12 @@ export type {
 
 // Common types
 export type { ViewState } from './common';
+
+// 3D Model viewer types
+export type {
+  AircraftModelType,
+  PartDefinition,
+  PartCategory,
+  PartStatus,
+  FaultInfo,
+} from './model-viewer';

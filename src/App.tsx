@@ -18,6 +18,8 @@ const AppContent: React.FC = () => {
     setView,
     username,
     setUsername,
+    password,
+    setPassword,
     login,
     logout,
     savedCases,
@@ -37,7 +39,7 @@ const AppContent: React.FC = () => {
   // Handle login
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    login(username, '');
+    login(username, password);
   };
 
   // Handle navigation to generator with prompt
@@ -54,8 +56,8 @@ const AppContent: React.FC = () => {
       <LoginView
         username={username}
         setUsername={setUsername}
-        password=""
-        setPassword={() => {}}
+        password={password}
+        setPassword={setPassword}
         onLogin={handleLogin}
       />
     );

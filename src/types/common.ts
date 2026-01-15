@@ -2,4 +2,4 @@
  * Common/shared types
  */
 
-export type ViewState = 'login' | 'dashboard' | 'generator' | 'library';
+export type ViewState = 'login' | 'dashboard' | 'generator' | 'library' | 'model-viewer';

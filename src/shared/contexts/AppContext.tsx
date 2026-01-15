@@ -16,6 +16,8 @@ export interface AppContextValue {
   // Auth State
   username: string;
   setUsername: (name: string) => void;
+  password: string;
+  setPassword: (pass: string) => void;
   isAuthenticated: boolean;
   login: (username: string, password: string) => boolean;
   logout: () => void;
@@ -49,6 +51,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
 
   // Auth State
   const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
   // Test Cases State
@@ -74,6 +77,7 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
 
   const logout = useCallback(() => {
     setUsername('');
+    setPassword('');
     setIsAuthenticated(false);
     setView('login');
   }, []);
@@ -106,6 +110,8 @@ export const AppProvider: React.FC<AppProviderProps> = ({ children }) => {
     // Auth
     username,
     setUsername,
+    password,
+    setPassword,
     isAuthenticated,
     login,
     logout,
